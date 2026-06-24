@@ -63,7 +63,13 @@ function AppleIcon() {
   );
 }
 
-function Logo({ size = 28, withWordmark = true, className = "", textClass = "text-fp-navy" }: { size?: number; withWordmark?: boolean; className?: string; textClass?: string }) {
+function Logo({
+  size = 28,
+  withWordmark = true,
+  className = "",
+  textClass = "text-fp-navy",
+  invert = false,
+}: { size?: number; withWordmark?: boolean; className?: string; textClass?: string; invert?: boolean }) {
   return (
     <span className={`flex items-center gap-2 font-bold ${className}`} style={{ fontFamily: "var(--font-display)" }}>
       <Image
@@ -73,6 +79,7 @@ function Logo({ size = 28, withWordmark = true, className = "", textClass = "tex
         height={size}
         priority
         className="rounded-md"
+        style={invert ? { filter: "brightness(0) invert(1)" } : undefined}
       />
       {withWordmark && <span className={`text-lg ${textClass}`}>FurPass</span>}
     </span>
@@ -124,10 +131,10 @@ export default function Home() {
             <p data-reveal style={{ transitionDelay: "160ms" }} className="mt-5 text-lg leading-relaxed text-fp-muted">
               Build a care guide in minutes. Share a private, expiring link with your sitter — no app required on their end.
             </p>
-            <div data-reveal style={{ transitionDelay: "240ms" }} className="mt-8" id="download">
+            <div data-reveal style={{ transitionDelay: "240ms" }} className="mt-8 w-full max-w-[340px] sm:max-w-[360px]" id="download">
               <a
                 href="#"
-                className="group inline-flex w-full max-w-[340px] items-center justify-center gap-4 rounded-2xl bg-fp-navy px-8 py-4 text-white shadow-[0_18px_40px_-18px_rgba(15,23,42,0.55)] ring-1 ring-fp-navy/5 transition-all hover:-translate-y-0.5 hover:bg-fp-navy/95 hover:shadow-[0_22px_48px_-18px_rgba(15,23,42,0.6)] sm:max-w-[360px]"
+                className="group flex w-full items-center justify-center gap-6 rounded-2xl bg-fp-navy px-8 py-4 text-white shadow-[0_18px_40px_-18px_rgba(15,23,42,0.55)] ring-1 ring-fp-navy/5 transition-all hover:-translate-y-0.5 hover:bg-fp-navy/95 hover:shadow-[0_22px_48px_-18px_rgba(15,23,42,0.6)]"
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white">
                   <AppleIcon />
@@ -137,7 +144,7 @@ export default function Home() {
                   <span className="mt-0.5 text-[22px] font-semibold tracking-tight">App Store</span>
                 </span>
               </a>
-              <p className="mt-4 text-xs font-medium text-fp-muted">Free · No ads · No subscriptions</p>
+              <p className="mt-4 text-center text-xs font-medium text-fp-muted">Free · No ads · No subscriptions</p>
             </div>
           </div>
 
@@ -152,7 +159,7 @@ export default function Home() {
                 <Phone src="/screens/screen-11.png" alt="Sitter's view in browser" />
               </div>
             </div>
-            <p data-reveal style={{ transitionDelay: "480ms" }} className="mt-6 flex items-center justify-center gap-2 text-sm font-medium text-fp-muted">
+            <p data-reveal style={{ transitionDelay: "480ms" }} className="mt-10 flex items-center justify-center gap-2 text-sm font-medium text-fp-muted">
               <span aria-hidden>🐾</span>
               Trusted by pet owners who care about privacy
             </p>
@@ -280,7 +287,7 @@ export default function Home() {
       <footer style={{ backgroundColor: "#252A34" }}>
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-8 md:flex-row md:justify-between">
           <div className="flex flex-col items-center gap-1 md:items-start">
-            <Logo textClass="text-white" />
+            <Logo textClass="text-white" invert />
             <p className="text-xs text-white/50">The safe way to share pet care.</p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/70">
