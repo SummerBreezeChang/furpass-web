@@ -127,23 +127,17 @@ export default function Home() {
             <p className="mt-5 text-lg leading-relaxed text-fp-muted">
               Build a care guide in minutes. Share a private, expiring link with your sitter — no app required on their end.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4" id="download">
-              <a href="#" className="inline-flex items-center gap-3 rounded-xl bg-fp-navy px-6 py-3.5 text-white transition-colors hover:bg-fp-navy/90">
+            <div className="mt-8" id="download">
+              <a
+                href="#"
+                className="inline-flex items-center gap-4 rounded-2xl bg-fp-navy px-9 py-5 text-white shadow-lg shadow-fp-navy/15 transition-colors hover:bg-fp-navy/90"
+              >
                 <AppleIcon />
                 <span className="flex flex-col items-start leading-tight">
-                  <span className="text-[10px] font-normal opacity-80">Download on the</span>
-                  <span className="text-base font-semibold">App Store</span>
+                  <span className="text-xs font-normal opacity-80">Download on the</span>
+                  <span className="text-xl font-semibold">App Store</span>
                 </span>
               </a>
-              <Link
-                href="https://github.com/SummerBreezeChang/furpass-web"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-fp-navy/15 bg-white px-5 py-3.5 text-sm font-semibold text-fp-navy transition-colors hover:bg-fp-teal-soft"
-              >
-                <GithubIcon />
-                View on GitHub
-              </Link>
             </div>
             <p className="mt-3 text-xs text-gray-400">Free · No ads · No subscriptions</p>
           </div>
@@ -151,21 +145,16 @@ export default function Home() {
           {/* Phone stack */}
           <div className="relative lg:col-span-6">
             <div className="pointer-events-none absolute inset-0 -z-10 mx-auto h-[420px] max-w-md rounded-[40px] bg-gradient-to-br from-fp-teal-soft via-white to-fp-pink-soft blur-2xl" />
-            <div className="relative mx-auto flex h-[520px] w-full max-w-[560px] items-center justify-center">
-              <Phone
-                src="/screens/screen-10.png"
-                alt="Share care guide with sitter"
-                className="absolute -left-2 top-2 z-10 rotate-[-8deg] scale-90 opacity-95"
-              />
+            <div className="relative mx-auto flex w-full items-center justify-center gap-6 px-4 py-6 sm:gap-10">
               <Phone
                 src="/screens/screen-01.png"
                 alt="FurPass care guide home"
-                className="absolute left-1/2 top-0 z-20 -translate-x-1/2"
+                className="relative z-20 -rotate-3"
               />
               <Phone
                 src="/screens/screen-11.png"
                 alt="Sitter's view in browser"
-                className="absolute -right-2 top-6 z-10 rotate-[8deg] scale-90 opacity-95"
+                className="relative z-10 hidden translate-y-8 rotate-3 sm:block"
               />
             </div>
           </div>
