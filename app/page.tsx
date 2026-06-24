@@ -115,16 +115,16 @@ export default function Home() {
         {/* Hero */}
         <section className="mt-10 grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-6">
-            <div className="inline-flex items-center rounded-full border border-fp-teal/20 bg-fp-teal-soft px-3 py-1 text-xs font-semibold uppercase tracking-wide text-fp-teal-dark">
+            <div data-reveal="fade" className="inline-flex items-center rounded-full border border-fp-teal/20 bg-fp-teal-soft px-3 py-1 text-xs font-semibold uppercase tracking-wide text-fp-teal-dark">
               Now on the App Store
             </div>
-            <h1 className="mt-5 text-5xl font-bold leading-[1.05] text-fp-navy sm:text-6xl" style={{ fontFamily: "var(--font-display)" }}>
+            <h1 data-reveal style={{ fontFamily: "var(--font-display)", transitionDelay: "80ms" }} className="mt-5 text-5xl font-bold leading-[1.05] text-fp-navy sm:text-6xl">
               Your pet&apos;s whole world, in one secure link.
             </h1>
-            <p className="mt-5 text-lg leading-relaxed text-fp-muted">
+            <p data-reveal style={{ transitionDelay: "160ms" }} className="mt-5 text-lg leading-relaxed text-fp-muted">
               Build a care guide in minutes. Share a private, expiring link with your sitter — no app required on their end.
             </p>
-            <div className="mt-8" id="download">
+            <div data-reveal style={{ transitionDelay: "240ms" }} className="mt-8" id="download">
               <a
                 href="#"
                 className="group inline-flex w-full max-w-[340px] items-center justify-center gap-4 rounded-2xl bg-fp-navy px-8 py-4 text-white shadow-[0_18px_40px_-18px_rgba(15,23,42,0.55)] ring-1 ring-fp-navy/5 transition-all hover:-translate-y-0.5 hover:bg-fp-navy/95 hover:shadow-[0_22px_48px_-18px_rgba(15,23,42,0.6)] sm:max-w-[360px]"
@@ -145,18 +145,14 @@ export default function Home() {
           <div className="relative lg:col-span-6">
             <div className="pointer-events-none absolute inset-0 -z-10 mx-auto h-[420px] max-w-md rounded-[40px] bg-gradient-to-br from-fp-teal-soft via-white to-fp-pink-soft blur-2xl" />
             <div className="relative mx-auto flex w-full items-center justify-center gap-6 px-4 py-6 sm:gap-10">
-              <Phone
-                src="/screens/screen-01.png"
-                alt="FurPass care guide home"
-                className="relative z-20 -rotate-3"
-              />
-              <Phone
-                src="/screens/screen-11.png"
-                alt="Sitter's view in browser"
-                className="relative z-10 hidden translate-y-8 rotate-3 sm:block"
-              />
+              <div data-reveal="scale" style={{ transitionDelay: "200ms" }} className="relative z-20 -rotate-3">
+                <Phone src="/screens/screen-01.png" alt="FurPass care guide home" />
+              </div>
+              <div data-reveal="scale" style={{ transitionDelay: "360ms" }} className="relative z-10 hidden translate-y-8 rotate-3 sm:block">
+                <Phone src="/screens/screen-11.png" alt="Sitter's view in browser" />
+              </div>
             </div>
-            <p className="mt-6 flex items-center justify-center gap-2 text-sm font-medium text-fp-muted">
+            <p data-reveal style={{ transitionDelay: "480ms" }} className="mt-6 flex items-center justify-center gap-2 text-sm font-medium text-fp-muted">
               <span aria-hidden>🐾</span>
               Trusted by pet owners who care about privacy
             </p>
@@ -165,13 +161,18 @@ export default function Home() {
 
         {/* How it works */}
         <section id="how-it-works" className="mt-16">
-          <p className="text-xs font-semibold uppercase tracking-widest text-fp-teal-dark">How it works</p>
-          <h2 className="mt-2 max-w-2xl text-3xl font-bold leading-snug text-fp-navy sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
+          <p data-reveal className="text-xs font-semibold uppercase tracking-widest text-fp-teal-dark">How it works</p>
+          <h2 data-reveal style={{ fontFamily: "var(--font-display)", transitionDelay: "80ms" }} className="mt-2 max-w-2xl text-3xl font-bold leading-snug text-fp-navy sm:text-4xl">
             From first care pad to sitter handoff — in four steps.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {STEPS.map(([n, t, d]) => (
-              <div key={n} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+            {STEPS.map(([n, t, d], i) => (
+              <div
+                key={n}
+                data-reveal
+                style={{ transitionDelay: `${120 + i * 100}ms` }}
+                className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+              >
                 <p className="text-3xl font-bold text-fp-teal-dark" style={{ fontFamily: "var(--font-display)" }}>{n}</p>
                 <h3 className="mt-3 text-base font-semibold text-fp-navy">{t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-fp-muted">{d}</p>
@@ -182,7 +183,7 @@ export default function Home() {
 
         {/* Features */}
         <section id="features" className="mt-24 grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
+          <div data-reveal="left" className="lg:col-span-5">
             <p className="text-xs font-semibold uppercase tracking-widest text-fp-teal-dark">Care pads</p>
             <h2 className="mt-2 text-3xl font-bold leading-snug text-fp-navy sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
               Everything your sitter needs, nothing they don&apos;t.
@@ -201,12 +202,17 @@ export default function Home() {
           </div>
           <div className="lg:col-span-7">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-[auto,1fr] sm:items-center">
-              <div className="flex justify-center sm:justify-start">
+              <div data-reveal="scale" className="flex justify-center sm:justify-start">
                 <Phone src="/screens/screen-01.png" alt="Care pads in the FurPass app" />
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {CARE_PADS.map(({ emoji, bg, title, desc }) => (
-                  <div key={title} className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+                {CARE_PADS.map(({ emoji, bg, title, desc }, i) => (
+                  <div
+                    key={title}
+                    data-reveal
+                    style={{ transitionDelay: `${i * 80}ms` }}
+                    className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm"
+                  >
                     <div className="flex h-9 w-9 items-center justify-center rounded-xl text-base" style={{ background: bg }}>{emoji}</div>
                     <h3 className="mt-2 text-sm font-semibold text-fp-navy">{title}</h3>
                     <p className="mt-1 text-xs leading-relaxed text-fp-muted">{desc}</p>
@@ -218,12 +224,12 @@ export default function Home() {
         </section>
 
         {/* Sitter view */}
-        <section className="mt-24 overflow-hidden rounded-3xl bg-gradient-to-br from-fp-teal-soft via-fp-teal-soft to-white p-8 sm:p-12">
+        <section data-reveal="fade" className="mt-24 overflow-hidden rounded-3xl bg-gradient-to-br from-fp-teal-soft via-fp-teal-soft to-white p-8 sm:p-12">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
-            <div className="flex justify-center lg:col-span-5">
+            <div data-reveal="left" style={{ transitionDelay: "120ms" }} className="flex justify-center lg:col-span-5">
               <Phone src="/screens/screen-11.png" alt="Sitter's view of the care guide" />
             </div>
-            <div className="lg:col-span-7">
+            <div data-reveal="right" style={{ transitionDelay: "200ms" }} className="lg:col-span-7">
               <p className="text-xs font-semibold uppercase tracking-widest text-fp-teal-dark">Sitter&apos;s view</p>
               <h2 className="mt-2 text-3xl font-bold leading-snug text-fp-navy sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
                 Sitters open it in their browser. No app. No account.
@@ -240,26 +246,26 @@ export default function Home() {
 
         {/* Security */}
         <section id="security" className="mb-20 mt-24">
-          <p className="text-xs font-semibold uppercase tracking-widest text-fp-teal-dark">Privacy first</p>
-          <h2 className="mt-2 max-w-2xl text-3xl font-bold leading-snug text-fp-navy sm:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
+          <p data-reveal className="text-xs font-semibold uppercase tracking-widest text-fp-teal-dark">Privacy first</p>
+          <h2 data-reveal style={{ fontFamily: "var(--font-display)", transitionDelay: "80ms" }} className="mt-2 max-w-2xl text-3xl font-bold leading-snug text-fp-navy sm:text-4xl">
             Your pet&apos;s information stays yours.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <div data-reveal style={{ transitionDelay: "120ms" }} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-fp-teal-soft text-fp-teal-dark">
                 <ClockIcon />
               </div>
               <h3 className="mt-4 text-lg font-bold text-fp-navy">Expiring links</h3>
               <p className="mt-2 text-sm leading-relaxed text-fp-muted">Links auto-expire when the sitting ends. Your door code doesn&apos;t live in a text thread forever.</p>
             </div>
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <div data-reveal style={{ transitionDelay: "220ms" }} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-fp-success">
                 <ShieldCheckIcon />
               </div>
               <h3 className="mt-4 text-lg font-bold text-fp-navy">Email-gated access</h3>
               <p className="mt-2 text-sm leading-relaxed text-fp-muted">Only the sitter&apos;s email can open the link. Nobody else can access your pet&apos;s information.</p>
             </div>
-            <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <div data-reveal style={{ transitionDelay: "320ms" }} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-fp-pink-soft text-fp-pink">
                 <XCircleIcon />
               </div>
