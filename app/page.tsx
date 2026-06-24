@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const APP_STORE_URL = "https://apps.apple.com/us/app/furpass/id6769140438";
+
 const NAV = [
   { href: "#how-it-works", label: "How it works" },
   { href: "#features", label: "Features" },
@@ -111,7 +113,12 @@ export default function Home() {
               <Link key={href} href={href} className="rounded-full px-4 py-1.5 text-sm font-medium text-gray-600 transition-colors hover:bg-fp-teal-soft hover:text-fp-navy">{label}</Link>
             ))}
           </nav>
-          <Link href="#download" className="rounded-full bg-fp-pink px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-fp-pink/90">
+          <Link
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full bg-fp-pink px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-fp-pink/90"
+          >
             Download
           </Link>
         </div>
@@ -133,7 +140,10 @@ export default function Home() {
             </p>
             <div data-reveal style={{ transitionDelay: "240ms" }} className="mt-8 w-full max-w-[340px] sm:max-w-[360px]" id="download">
               <a
-                href="#"
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Download FurPass on the App Store"
                 className="group flex w-full items-center justify-center gap-6 rounded-2xl bg-fp-navy px-8 py-4 text-white shadow-[0_18px_40px_-18px_rgba(15,23,42,0.55)] ring-1 ring-fp-navy/5 transition-all hover:-translate-y-0.5 hover:bg-fp-navy/95 hover:shadow-[0_22px_48px_-18px_rgba(15,23,42,0.6)]"
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white">
@@ -244,7 +254,12 @@ export default function Home() {
               <p className="mt-4 text-base leading-relaxed text-fp-muted">
                 Just a clean, private care guide with everything they need — accessible in seconds from any phone. The link expires automatically when the sitting ends.
               </p>
-              <a href="#download" className="mt-8 inline-flex items-center justify-center rounded-full bg-fp-pink px-8 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-fp-pink/90">
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-flex items-center justify-center rounded-full bg-fp-pink px-8 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-fp-pink/90"
+              >
                 Download FurPass free
               </a>
             </div>
