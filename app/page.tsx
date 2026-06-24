@@ -63,11 +63,19 @@ function AppleIcon() {
   );
 }
 
-function GithubIcon() {
+function Logo({ size = 28, withWordmark = true, className = "", textClass = "text-fp-navy" }: { size?: number; withWordmark?: boolean; className?: string; textClass?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.485 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.455-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.31.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.481A10.02 10.02 0 0022 12.017C22 6.485 17.522 2 12 2z" />
-    </svg>
+    <span className={`flex items-center gap-2 font-bold ${className}`} style={{ fontFamily: "var(--font-display)" }}>
+      <Image
+        src="/icon.png"
+        alt="FurPass logo"
+        width={size}
+        height={size}
+        priority
+        className="rounded-md"
+      />
+      {withWordmark && <span className={`text-lg ${textClass}`}>FurPass</span>}
+    </span>
   );
 }
 
@@ -88,28 +96,17 @@ export default function Home() {
       {/* Navbar */}
       <header className="sticky top-0 z-50 flex justify-center px-4 pt-4">
         <div className="flex w-full max-w-4xl items-center justify-between gap-4 rounded-full border border-white/80 bg-white/70 px-5 py-3 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-xl">
-          <Link href="/" className="flex items-center gap-2 text-lg font-bold text-fp-navy" style={{ fontFamily: "var(--font-display)" }}>
-            <span className="text-xl">🐾</span> FurPass
+          <Link href="/" aria-label="FurPass home">
+            <Logo />
           </Link>
           <nav className="hidden items-center gap-1 md:flex">
             {NAV.map(({ href, label }) => (
               <Link key={href} href={href} className="rounded-full px-4 py-1.5 text-sm font-medium text-gray-600 transition-colors hover:bg-fp-teal-soft hover:text-fp-navy">{label}</Link>
             ))}
           </nav>
-          <div className="flex items-center gap-2">
-            <Link
-              href="https://github.com/SummerBreezeChang/furpass-web"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="FurPass on GitHub"
-              className="hidden h-9 w-9 items-center justify-center rounded-full text-fp-navy/70 transition-colors hover:bg-fp-teal-soft hover:text-fp-navy sm:flex"
-            >
-              <GithubIcon />
-            </Link>
-            <Link href="#download" className="rounded-full bg-fp-pink px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-fp-pink/90">
-              Download
-            </Link>
-          </div>
+          <Link href="#download" className="rounded-full bg-fp-pink px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-fp-pink/90">
+            Download
+          </Link>
         </div>
       </header>
 
@@ -130,16 +127,18 @@ export default function Home() {
             <div className="mt-8" id="download">
               <a
                 href="#"
-                className="inline-flex items-center gap-4 rounded-2xl bg-fp-navy px-9 py-5 text-white shadow-lg shadow-fp-navy/15 transition-colors hover:bg-fp-navy/90"
+                className="group inline-flex w-full max-w-[340px] items-center justify-center gap-4 rounded-2xl bg-fp-navy px-8 py-4 text-white shadow-[0_18px_40px_-18px_rgba(15,23,42,0.55)] ring-1 ring-fp-navy/5 transition-all hover:-translate-y-0.5 hover:bg-fp-navy/95 hover:shadow-[0_22px_48px_-18px_rgba(15,23,42,0.6)] sm:max-w-[360px]"
               >
-                <AppleIcon />
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white">
+                  <AppleIcon />
+                </span>
                 <span className="flex flex-col items-start leading-tight">
-                  <span className="text-xs font-normal opacity-80">Download on the</span>
-                  <span className="text-xl font-semibold">App Store</span>
+                  <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/70">Download on the</span>
+                  <span className="mt-0.5 text-[22px] font-semibold tracking-tight">App Store</span>
                 </span>
               </a>
+              <p className="mt-4 text-xs font-medium text-fp-muted">Free · No ads · No subscriptions</p>
             </div>
-            <p className="mt-3 text-xs text-gray-400">Free · No ads · No subscriptions</p>
           </div>
 
           {/* Phone stack */}
@@ -157,15 +156,12 @@ export default function Home() {
                 className="relative z-10 hidden translate-y-8 rotate-3 sm:block"
               />
             </div>
+            <p className="mt-6 flex items-center justify-center gap-2 text-sm font-medium text-fp-muted">
+              <span aria-hidden>🐾</span>
+              Trusted by pet owners who care about privacy
+            </p>
           </div>
         </section>
-
-        {/* Social proof */}
-        <div className="mt-20 flex items-center gap-4">
-          <div className="h-px flex-1 bg-gray-200" />
-          <p className="text-sm font-medium text-fp-muted">🐾 Trusted by pet owners who care about privacy</p>
-          <div className="h-px flex-1 bg-gray-200" />
-        </div>
 
         {/* How it works */}
         <section id="how-it-works" className="mt-16">
@@ -277,15 +273,13 @@ export default function Home() {
       {/* Footer */}
       <footer style={{ backgroundColor: "#252A34" }}>
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-8 md:flex-row md:justify-between">
-          <span className="flex items-center gap-2 text-lg font-bold text-white" style={{ fontFamily: "var(--font-display)" }}>
-            🐾 FurPass
-          </span>
+          <div className="flex flex-col items-center gap-1 md:items-start">
+            <Logo textClass="text-white" />
+            <p className="text-xs text-white/50">The safe way to share pet care.</p>
+          </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/70">
             <Link href="/privacy" className="transition-colors hover:text-white">Privacy Policy</Link>
             <Link href="/support" className="transition-colors hover:text-white">Support</Link>
-            <Link href="https://github.com/SummerBreezeChang/furpass-web" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 transition-colors hover:text-white">
-              <GithubIcon /> GitHub
-            </Link>
             <a href="mailto:contact@summerchang.co" className="transition-colors hover:text-white">contact@summerchang.co</a>
           </div>
           <p className="text-sm text-white/50">&copy; 2026 FurPass</p>
